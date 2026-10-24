@@ -1,0 +1,36 @@
+{
+  "lastUpdated": {
+    "display": "October 24, 2026",
+    "iso": "2026-10-24"
+  },
+  "routes": {
+    "/": {
+      "title": "Tropic Wave Solutions LLC | Software design and development",
+      "description": "Tropic Wave Solutions LLC designs, builds, and operates software applications, SaaS tools, and business workflow products."
+    },
+    "/about": {
+      "title": "About | Tropic Wave Solutions LLC",
+      "description": "Learn about our Florida software company and our practical approach to custom software and product engineering."
+    },
+    "/services": {
+      "title": "What we do | Tropic Wave Solutions LLC",
+      "description": "Custom software, product engineering, web and mobile apps, integrations, automation, and original products."
+    },
+    "/contact": {
+      "title": "Contact | Tropic Wave Solutions LLC",
+      "description": "Contact Tropic Wave Solutions LLC in Hialeah, Florida by email or phone."
+    },
+    "/privacy": {
+      "title": "Privacy Policy | Tropic Wave Solutions LLC",
+      "description": "Privacy Policy for Tropic Wave Solutions LLC."
+    },
+    "/terms": {
+      "title": "Terms of Service | Tropic Wave Solutions LLC",
+      "description": "Terms of Service for Tropic Wave Solutions LLC."
+    },
+    "/data-deletion": {
+      "title": "Data Deletion | Tropic Wave Solutions LLC",
+      "description": "Instructions for requesting deletion of data held by Tropic Wave Solutions LLC."
+    }
+  }
+}
