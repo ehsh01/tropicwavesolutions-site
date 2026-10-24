@@ -22,6 +22,7 @@ import {
   useState,
 } from "react";
 import { Link, Route, Switch, useLocation } from "wouter";
+import siteData from "./site-data.json";
 
 const SITE_URL = "https://tropicwavesolutions.com";
 const SUPPORT_EMAIL = "support@tropicwavesolutions.com";
@@ -36,41 +37,8 @@ const navItems = [
   { href: "/contact", label: "Contact" },
 ];
 
-const pageMeta: Record<string, { title: string; description: string }> = {
-  "/": {
-    title: "Tropic Wave Solutions LLC | Software design and development",
-    description:
-      "Tropic Wave Solutions LLC designs, builds, and operates software applications, SaaS tools, and business workflow products.",
-  },
-  "/about": {
-    title: "About | Tropic Wave Solutions LLC",
-    description:
-      "Learn about our Florida software company and our practical approach to custom software and product engineering.",
-  },
-  "/services": {
-    title: "What we do | Tropic Wave Solutions LLC",
-    description:
-      "Custom software, product engineering, web and mobile apps, integrations, automation, and original products.",
-  },
-  "/contact": {
-    title: "Contact | Tropic Wave Solutions LLC",
-    description:
-      "Contact Tropic Wave Solutions LLC in Hialeah, Florida by email or phone.",
-  },
-  "/privacy": {
-    title: "Privacy Policy | Tropic Wave Solutions LLC",
-    description: "Privacy Policy for Tropic Wave Solutions LLC.",
-  },
-  "/terms": {
-    title: "Terms of Service | Tropic Wave Solutions LLC",
-    description: "Terms of Service for Tropic Wave Solutions LLC.",
-  },
-  "/data-deletion": {
-    title: "Data Deletion | Tropic Wave Solutions LLC",
-    description:
-      "Instructions for requesting deletion of data held by Tropic Wave Solutions LLC.",
-  },
-};
+const pageMeta: Record<string, { title: string; description: string }> =
+  siteData.routes;
 
 function updateMeta(path: string) {
   const meta = pageMeta[path] ?? {
@@ -312,7 +280,7 @@ function PageIntro({
 
 function HomePage() {
   return (
-    <>
+    <main>
       <section className="relative overflow-hidden bg-teal-950 text-white">
         <div className="hero-grid absolute inset-0 opacity-30" />
         <div className="absolute -right-28 top-20 h-96 w-96 rounded-full bg-coral-400/20 blur-3xl" />
@@ -441,13 +409,13 @@ function HomePage() {
       </section>
 
       <CallToAction />
-    </>
+    </main>
   );
 }
 
 function AboutPage() {
   return (
-    <>
+    <main>
       <PageIntro eyebrow="About us" title="A Florida software company building useful applications.">
         Tropic Wave Solutions LLC is a software company based in Hialeah,
         Florida. We design, build, and operate software applications for
@@ -480,11 +448,6 @@ function AboutPage() {
                 maintenance, quality checks, product updates, performance,
                 privacy, and customer support.
               </p>
-              <p>
-                We are a small business. This site does not claim a team size,
-                customer count, award history, or reach that we cannot
-                substantiate.
-              </p>
             </div>
           </FadeIn>
         </div>
@@ -503,7 +466,7 @@ function AboutPage() {
         </div>
       </section>
       <CallToAction />
-    </>
+    </main>
   );
 }
 
@@ -552,7 +515,7 @@ function ServicesPage() {
   ];
 
   return (
-    <>
+    <main>
       <PageIntro eyebrow="What we do" title="Software shaped around the work it needs to support.">
         We design, build, integrate, and operate software applications—from
         custom business tools to our own focused products.
@@ -640,7 +603,7 @@ function ServicesPage() {
         </div>
       </section>
       <CallToAction />
-    </>
+    </main>
   );
 }
 
@@ -716,7 +679,7 @@ function ContactForm() {
         </label>
       </div>
       <label className="field-label mt-5">
-        Phone <span className="font-normal text-slate-400">(optional)</span>
+        Phone <span className="font-normal text-slate-600">(optional)</span>
         <input
           className="field"
           type="tel"
@@ -765,10 +728,10 @@ function ContactForm() {
 
 function ContactPage() {
   return (
-    <>
+    <main>
       <PageIntro eyebrow="Contact" title="Let’s start a useful conversation.">
         Questions about Tropic Wave Solutions or one of our products? Reach us
-        by email or phone. We do not publish a street address.
+        by email or phone.
       </PageIntro>
       <section className="section bg-teal-50">
         <div className="shell grid grid-cols-1 gap-12 lg:grid-cols-[.8fr_1.2fr]">
@@ -789,8 +752,7 @@ function ContactPage() {
                   Email us directly
                 </h2>
                 <p className="mt-4 max-w-lg leading-7 text-slate-600">
-                  Our secure contact form is not configured on this build. You
-                  can still reach us using your email app.
+                  Send us a message using your preferred email app.
                 </p>
                 <a
                   href={`mailto:${SUPPORT_EMAIL}?subject=Tropic%20Wave%20Solutions%20inquiry`}
@@ -804,7 +766,7 @@ function ContactPage() {
           </FadeIn>
         </div>
       </section>
-    </>
+    </main>
   );
 }
 
@@ -820,7 +782,7 @@ function LegalPage({
   return (
     <>
       <PageIntro eyebrow={eyebrow} title={title}>
-        Last updated: October 24, 2026
+        Last updated: {siteData.lastUpdated.display}
       </PageIntro>
       <main className="section pt-8">
         <article className="legal shell">{children}</article>
