@@ -1,4 +1,4 @@
-import { mkdir, rm, writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import sharp from "sharp";
 
@@ -100,11 +100,6 @@ await Promise.all([
     .removeAlpha()
     .png({ compressionLevel: 9 })
     .toFile(resolve(outputDir, "social-card.png")),
-]);
-
-await Promise.all([
-  rm(resolve(outputDir, "logo.svg"), { force: true }),
-  rm(resolve(outputDir, "favicon.svg"), { force: true }),
 ]);
 
 console.log("Generated approved logo asset set in public/.");

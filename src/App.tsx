@@ -87,11 +87,11 @@ function Header() {
       <div className="shell flex h-20 items-center justify-between">
         <AppLink href="/" className="group flex items-center gap-3" >
           <img
-            src="/logo.svg"
+            src="/tw-logo-header.webp"
             alt=""
-            width="46"
-            height="46"
-            className="h-11 w-11 transition-transform group-hover:-rotate-3"
+            width="132"
+            height="96"
+            className="h-11 w-auto transition-transform group-hover:-rotate-3"
           />
           <span className="max-w-48 text-[15px] font-bold leading-tight tracking-tight text-teal-950 sm:text-base">
             Tropic Wave
@@ -160,7 +160,11 @@ function Footer() {
       <div className="shell grid grid-cols-1 gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <div className="mb-4 flex items-center gap-3">
-            <img src="/logo.svg" alt="" className="h-12 w-12 rounded-xl" />
+            <img
+              src="/tw-logo-header.webp"
+              alt=""
+              className="h-12 w-auto rounded-xl"
+            />
             <p className="font-bold leading-tight">
               Tropic Wave Solutions LLC
               <span className="block font-normal text-teal-200">
@@ -321,9 +325,9 @@ function HomePage() {
             <div className="absolute inset-7 rotate-6 rounded-[4rem] border border-teal-200/25 bg-white/5 backdrop-blur" />
             <div className="absolute inset-16 -rotate-3 rounded-[3.4rem] bg-teal-700/65 shadow-2xl" />
             <img
-              src="/logo.svg"
+              src="/tw-logo-hero.webp"
               alt="Tropic Wave Solutions"
-              className="absolute inset-24 rounded-[2.6rem] shadow-2xl"
+              className="absolute inset-24 rounded-[2.6rem] object-contain shadow-2xl"
             />
             <div className="absolute bottom-7 right-0 rounded-2xl border border-white/15 bg-teal-900/85 px-5 py-4 shadow-xl backdrop-blur">
               <p className="text-xs font-bold uppercase tracking-widest text-coral-300">
