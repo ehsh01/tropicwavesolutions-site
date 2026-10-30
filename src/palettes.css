@@ -1,0 +1,86 @@
+.palette-a {
+  --color-page: #f5faff;
+  --color-surface: #ffffff;
+  --color-header: #f5faff;
+  --color-strong: #061827;
+  --color-strong-raised: #0b3555;
+  --color-on-strong: #f5faff;
+  --color-on-strong-muted: #c7dbea;
+  --color-on-strong-accent: #ffb26b;
+  --color-heading: #061827;
+  --color-body: #475569;
+  --color-primary: #075985;
+  --color-primary-hover: #06476a;
+  --color-soft: #eaf5fc;
+  --color-pill: #dcefff;
+  --color-pill-text: #0a2a43;
+  --color-accent: #ffb26b;
+  --color-accent-hover: #ffc28c;
+  --color-accent-strong: #9c3b00;
+  --color-on-accent: #061827;
+  --color-border: #c7dbea;
+  --color-focus: #075985;
+  --color-selection: #dcefff;
+  --color-decorative-panel: #0b3555;
+  --color-glow: #ffb26b33;
+  --color-grid: #f5faff12;
+  --color-shadow: #06182718;
+}
+
+.palette-b {
+  --color-page: #f8fafc;
+  --color-surface: #ffffff;
+  --color-header: #f8fafc;
+  --color-strong: #17191f;
+  --color-strong-raised: #262b33;
+  --color-on-strong: #f9fafb;
+  --color-on-strong-muted: #d1d5db;
+  --color-on-strong-accent: #ffb56f;
+  --color-heading: #17191f;
+  --color-body: #475569;
+  --color-primary: #b64700;
+  --color-primary-hover: #8f3700;
+  --color-soft: #fff7ed;
+  --color-pill: #fff0e1;
+  --color-pill-text: #5a2600;
+  --color-accent: #ffb56f;
+  --color-accent-hover: #ffc58f;
+  --color-accent-strong: #b64700;
+  --color-on-accent: #17191f;
+  --color-border: #d7dce2;
+  --color-focus: #b64700;
+  --color-selection: #fff0e1;
+  --color-decorative-panel: #262b33;
+  --color-glow: #ffb56f33;
+  --color-grid: #f9fafb12;
+  --color-shadow: #17191f18;
+}
+
+.palette-c {
+  --color-page: #f7fafc;
+  --color-surface: #ffffff;
+  --color-header: #f7fafc;
+  --color-strong: #f7fafc;
+  --color-strong-raised: #dceeff;
+  --color-on-strong: #111827;
+  --color-on-strong-muted: #475569;
+  --color-on-strong-accent: #a83d00;
+  --color-heading: #111827;
+  --color-body: #475569;
+  --color-primary: #0b5f8a;
+  --color-primary-hover: #084b6f;
+  --color-soft: #dceeff;
+  --color-pill: #dceeff;
+  --color-pill-text: #111827;
+  --color-accent: #ffb067;
+  --color-accent-hover: #ffc087;
+  --color-accent-strong: #a83d00;
+  --color-on-accent: #111827;
+  --color-border: #cbd5e1;
+  --color-focus: #a83d00;
+  --color-selection: #ffb067;
+  --color-decorative-panel: #dceeff;
+  --color-glow: #ffb06733;
+  --color-grid: #0b5f8a1a;
+  --color-shadow: #11182714;
+}
