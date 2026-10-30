@@ -46,6 +46,7 @@ const requiredPairs = [
   ["primary", "surface"],
   ["primary", "header"],
   ["primary", "soft"],
+  ["primary-hover", "soft"],
   ["on-strong", "strong"],
   ["on-strong-muted", "strong"],
   ["on-strong-accent", "strong"],
@@ -61,6 +62,8 @@ const requiredPairs = [
   ["on-accent", "accent-hover"],
   ["surface", "primary-hover"],
 ];
+
+const pairedTokens = new Set(requiredPairs.flat());
 
 function parsePalettes(css) {
   const palettes = new Map();
@@ -107,6 +110,10 @@ function contrastRatio(foreground, background) {
   return (lighter + 0.05) / (darker + 0.05);
 }
 
+function isOpaque(hex) {
+  return /^#[\da-f]{6}(?:ff)?$/i.test(hex);
+}
+
 const palettes = parsePalettes(source);
 const failures = [];
 
@@ -124,6 +131,15 @@ for (const paletteName of ["palette-a", "palette-b", "palette-c"]) {
     }
   }
 
+  for (const token of pairedTokens) {
+    const value = tokens.get(token);
+    if (value && !isOpaque(value)) {
+      failures.push(
+        `${paletteName}: --color-${token} must be opaque when used in required contrast pairs; received ${value}`,
+      );
+    }
+  }
+
   let lowestRatio = Number.POSITIVE_INFINITY;
   let lowestPair = "";
 
@@ -131,7 +147,14 @@ for (const paletteName of ["palette-a", "palette-b", "palette-c"]) {
     const foreground = tokens.get(foregroundName);
     const background = tokens.get(backgroundName);
 
-    if (!foreground || !background) continue;
+    if (
+      !foreground ||
+      !background ||
+      !isOpaque(foreground) ||
+      !isOpaque(background)
+    ) {
+      continue;
+    }
 
     const ratio = contrastRatio(foreground, background);
     if (ratio < lowestRatio) {

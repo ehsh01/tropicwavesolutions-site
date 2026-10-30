@@ -19,6 +19,7 @@ import {
   type FormEvent,
   type ReactNode,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import { Link, Route, Switch, useLocation } from "wouter";
@@ -1153,6 +1154,21 @@ function NotFoundPage() {
 
 export function App() {
   const [location] = useLocation();
+  const paletteRoot = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!paletteRoot.current) return;
+
+    const themeColor = getComputedStyle(paletteRoot.current)
+      .getPropertyValue("--color-strong")
+      .trim();
+
+    if (themeColor) {
+      document
+        .querySelector('meta[name="theme-color"]')
+        ?.setAttribute("content", themeColor);
+    }
+  }, []);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -1160,7 +1176,10 @@ export function App() {
   }, [location]);
 
   return (
-    <div className={`${ACTIVE_PALETTE} min-h-screen bg-[var(--color-page)] text-[var(--color-body)]`}>
+    <div
+      ref={paletteRoot}
+      className={`${ACTIVE_PALETTE} min-h-screen bg-[var(--color-page)] text-[var(--color-body)]`}
+    >
       <Header />
       <Switch>
         <Route path="/" component={HomePage} />
