@@ -29,6 +29,8 @@ const SUPPORT_EMAIL = "support@tropicwavesolutions.com";
 const PHONE_DISPLAY = "305-498-2030";
 const PHONE_LINK = "+13054982030";
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY?.trim();
+type Palette = "palette-a" | "palette-b" | "palette-c";
+const ACTIVE_PALETTE: Palette = "palette-c";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -83,7 +85,7 @@ function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-teal-950/10 bg-stone-50/90 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-header)] backdrop-blur-xl">
       <div className="shell flex h-20 items-center justify-between">
         <AppLink href="/" className="group flex items-center gap-3" >
           <img
@@ -93,9 +95,9 @@ function Header() {
             height="96"
             className="h-11 w-auto transition-transform group-hover:-rotate-3"
           />
-          <span className="max-w-48 text-[15px] font-bold leading-tight tracking-tight text-teal-950 sm:text-base">
+          <span className="max-w-48 text-[15px] font-bold leading-tight tracking-tight text-[var(--color-heading)] sm:text-base">
             Tropic Wave
-            <span className="block font-medium text-teal-700">Solutions LLC</span>
+            <span className="block font-medium text-[var(--color-primary)]">Solutions LLC</span>
           </span>
         </AppLink>
 
@@ -116,7 +118,7 @@ function Header() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
-          className="rounded-full border border-teal-950/15 p-2.5 text-teal-950 md:hidden"
+          className="rounded-full border border-[var(--color-border)] p-2.5 text-[var(--color-heading)] md:hidden"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -129,7 +131,7 @@ function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             aria-label="Mobile navigation"
-            className="overflow-hidden border-t border-teal-950/10 bg-stone-50 md:hidden"
+            className="overflow-hidden border-t border-[var(--color-border)] bg-[var(--color-header)] md:hidden"
           >
             <div className="shell flex flex-col py-4">
               {navItems.map((item) => (
@@ -139,8 +141,8 @@ function Header() {
                   onClick={() => setOpen(false)}
                   className={`rounded-xl px-4 py-3 font-semibold ${
                     location === item.href
-                      ? "bg-teal-100 text-teal-950"
-                      : "text-slate-700"
+                      ? "bg-[var(--color-pill)] text-[var(--color-pill-text)]"
+                      : "text-[var(--color-body)]"
                   }`}
                 >
                   {item.label}
@@ -156,7 +158,7 @@ function Header() {
 
 function Footer() {
   return (
-    <footer className="bg-teal-950 text-teal-50">
+    <footer className="bg-[var(--color-strong)] text-[var(--color-on-strong)]">
       <div className="shell grid grid-cols-1 gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <div className="mb-4 flex items-center gap-3">
@@ -167,22 +169,22 @@ function Footer() {
             />
             <p className="font-bold leading-tight">
               Tropic Wave Solutions LLC
-              <span className="block font-normal text-teal-200">
+              <span className="block font-normal text-[var(--color-on-strong-muted)]">
                 Hialeah, Florida
               </span>
             </p>
           </div>
-          <p className="max-w-sm text-sm leading-6 text-teal-100/75">
+          <p className="max-w-sm text-sm leading-6 text-[var(--color-on-strong-muted)]">
             Designing, building, and operating practical software applications
             and original products.
           </p>
         </div>
 
         <div>
-          <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-coral-300">
+          <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-[var(--color-on-strong-accent)]">
             Explore
           </p>
-          <div className="flex flex-col gap-2 text-sm text-teal-100/80">
+          <div className="flex flex-col gap-2 text-sm text-[var(--color-on-strong-muted)]">
             {navItems.map((item) => (
               <AppLink key={item.href} href={item.href} className="footer-link">
                 {item.label}
@@ -192,10 +194,10 @@ function Footer() {
         </div>
 
         <div>
-          <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-coral-300">
+          <p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-[var(--color-on-strong-accent)]">
             Legal
           </p>
-          <div className="flex flex-col gap-2 text-sm text-teal-100/80">
+          <div className="flex flex-col gap-2 text-sm text-[var(--color-on-strong-muted)]">
             <AppLink href="/privacy" className="footer-link">
               Privacy Policy
             </AppLink>
@@ -208,10 +210,10 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-white/10">
-        <div className="shell flex flex-col gap-2 py-6 text-xs text-teal-100/60 sm:flex-row sm:items-center sm:justify-between">
+      <div className="border-t border-[var(--color-border)]">
+        <div className="shell flex flex-col gap-2 py-6 text-xs text-[var(--color-on-strong-muted)] sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 Tropic Wave Solutions LLC</p>
-          <a href={`mailto:${SUPPORT_EMAIL}`} className="hover:text-white">
+          <a href={`mailto:${SUPPORT_EMAIL}`} className="hover:text-[var(--color-on-strong)]">
             {SUPPORT_EMAIL}
           </a>
         </div>
@@ -265,7 +267,7 @@ function PageIntro({
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.08 }}
-          className="max-w-4xl text-4xl font-black tracking-[-0.04em] text-teal-950 sm:text-6xl"
+          className="max-w-4xl text-4xl font-black tracking-[-0.04em] text-[var(--color-heading)] sm:text-6xl"
         >
           {title}
         </motion.h1>
@@ -273,7 +275,7 @@ function PageIntro({
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.16 }}
-          className="mt-6 max-w-2xl text-lg leading-8 text-slate-600"
+          className="mt-6 max-w-2xl text-lg leading-8 text-[var(--color-body)]"
         >
           {children}
         </motion.div>
@@ -285,24 +287,24 @@ function PageIntro({
 function HomePage() {
   return (
     <main>
-      <section className="relative overflow-hidden bg-teal-950 text-white">
+      <section className="relative overflow-hidden bg-[var(--color-strong)] text-[var(--color-on-strong)]">
         <div className="hero-grid absolute inset-0 opacity-30" />
-        <div className="absolute -right-28 top-20 h-96 w-96 rounded-full bg-coral-400/20 blur-3xl" />
+        <div className="absolute -right-28 top-20 h-96 w-96 rounded-full bg-[var(--color-glow)] blur-3xl" />
         <div className="shell relative grid min-h-[690px] grid-cols-1 items-center gap-12 py-24 lg:grid-cols-[1.15fr_.85fr]">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65 }}
           >
-            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-teal-300/25 bg-white/5 px-4 py-2 text-sm font-semibold text-teal-100">
-              <Sparkles size={16} className="text-coral-300" />
+            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-strong-raised)] px-4 py-2 text-sm font-semibold text-[var(--color-on-strong)]">
+              <Sparkles size={16} className="text-[var(--color-on-strong-accent)]" />
               Built in Hialeah, Florida
             </p>
             <h1 className="max-w-3xl text-5xl font-black leading-[0.98] tracking-[-0.055em] sm:text-7xl">
               Software built to solve{" "}
-              <span className="text-coral-300">real work.</span>
+              <span className="text-[var(--color-on-strong-accent)]">real work.</span>
             </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-teal-50/75 sm:text-xl">
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-[var(--color-on-strong-muted)] sm:text-xl">
               Tropic Wave Solutions LLC designs, builds, and operates web apps,
               SaaS tools, business applications, integrations, and automation.
             </p>
@@ -322,8 +324,8 @@ function HomePage() {
             transition={{ duration: 0.75, delay: 0.15 }}
             className="relative mx-auto hidden aspect-square w-full max-w-md lg:block"
           >
-            <div className="absolute inset-7 rotate-6 rounded-[4rem] border border-teal-200/25 bg-white/5 backdrop-blur" />
-            <div className="absolute inset-16 -rotate-3 rounded-[3.4rem] bg-teal-700/65 shadow-2xl" />
+            <div className="absolute inset-7 rotate-6 rounded-[4rem] border border-[var(--color-border)] bg-[var(--color-decorative-panel)] backdrop-blur" />
+            <div className="absolute inset-16 -rotate-3 rounded-[3.4rem] bg-[var(--color-strong-raised)] shadow-2xl" />
             <div className="absolute inset-24 rounded-[2.6rem] shadow-2xl">
               <img
                 src="/tw-logo-hero.webp"
@@ -331,8 +333,8 @@ function HomePage() {
                 className="h-full w-full object-contain"
               />
             </div>
-            <div className="absolute bottom-7 right-0 rounded-2xl border border-white/15 bg-teal-900/85 px-5 py-4 shadow-xl backdrop-blur">
-              <p className="text-xs font-bold uppercase tracking-widest text-coral-300">
+            <div className="absolute bottom-7 right-0 rounded-2xl border border-[var(--color-border)] bg-[var(--color-strong-raised)] px-5 py-4 shadow-xl backdrop-blur">
+              <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-on-strong-accent)]">
                 Our focus
               </p>
               <p className="mt-1 font-semibold">Useful. Clear. Sustainable.</p>
@@ -368,33 +370,33 @@ function HomePage() {
               },
             ].map((item, index) => (
               <FadeIn key={item.title} delay={index * 0.08} className="info-card">
-                <item.icon className="mb-8 text-teal-700" size={30} />
-                <h3 className="text-xl font-bold text-teal-950">{item.title}</h3>
-                <p className="mt-3 leading-7 text-slate-600">{item.text}</p>
+                <item.icon className="mb-8 text-[var(--color-primary)]" size={30} />
+                <h3 className="text-xl font-bold text-[var(--color-heading)]">{item.title}</h3>
+                <p className="mt-3 leading-7 text-[var(--color-body)]">{item.text}</p>
               </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section bg-teal-50">
+      <section className="section bg-[var(--color-soft)]">
         <div className="shell grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
           <FadeIn>
             <p className="eyebrow">How we work</p>
             <h2 className="section-title">
               Deliberate work, without the noise.
             </h2>
-            <p className="mt-6 text-lg leading-8 text-slate-600">
+            <p className="mt-6 text-lg leading-8 text-[var(--color-body)]">
               We focus on understandable experiences, responsible data
               practices, and steady improvements. We would rather solve a
               defined problem well than overcomplicate an application.
             </p>
-            <AppLink href="/about" className="mt-8 inline-flex items-center gap-2 font-bold text-teal-800 hover:text-teal-600">
+            <AppLink href="/about" className="mt-8 inline-flex items-center gap-2 font-bold text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]">
               More about the company <ArrowRight size={18} />
             </AppLink>
           </FadeIn>
-          <FadeIn className="rounded-[2rem] bg-teal-950 p-8 text-white sm:p-10">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-coral-300">
+          <FadeIn className="rounded-[2rem] bg-[var(--color-strong)] p-8 text-[var(--color-on-strong)] sm:p-10">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-[var(--color-on-strong-accent)]">
               Our operating principles
             </p>
             <ul className="mt-8 space-y-5">
@@ -404,8 +406,8 @@ function HomePage() {
                 "Maintain what we build over time.",
                 "Communicate plainly and honestly.",
               ].map((item) => (
-                <li key={item} className="flex gap-3 text-lg text-teal-50/85">
-                  <Check className="mt-1 shrink-0 text-teal-300" size={20} />
+                <li key={item} className="flex gap-3 text-lg text-[var(--color-on-strong-muted)]">
+                  <Check className="mt-1 shrink-0 text-[var(--color-on-strong-accent)]" size={20} />
                   {item}
                 </li>
               ))}
@@ -429,8 +431,8 @@ function AboutPage() {
       </PageIntro>
       <section className="section">
         <div className="shell grid grid-cols-1 gap-12 lg:grid-cols-[.9fr_1.1fr]">
-          <FadeIn className="rounded-[2rem] bg-teal-950 p-8 text-white sm:p-12">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-coral-300">
+          <FadeIn className="rounded-[2rem] bg-[var(--color-strong)] p-8 text-[var(--color-on-strong)] sm:p-12">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-[var(--color-on-strong-accent)]">
               Our aim
             </p>
             <p className="mt-6 text-3xl font-bold leading-tight">
@@ -439,10 +441,10 @@ function AboutPage() {
             </p>
           </FadeIn>
           <FadeIn>
-            <h2 className="text-3xl font-bold tracking-tight text-teal-950">
+            <h2 className="text-3xl font-bold tracking-tight text-[var(--color-heading)]">
               What that means in practice
             </h2>
-            <div className="mt-6 space-y-5 text-lg leading-8 text-slate-600">
+            <div className="mt-6 space-y-5 text-lg leading-8 text-[var(--color-body)]">
               <p>
                 Our work spans custom software design and development, product
                 engineering, web and mobile applications, and the integrations
@@ -458,12 +460,12 @@ function AboutPage() {
           </FadeIn>
         </div>
       </section>
-      <section className="section bg-teal-50">
+      <section className="section bg-[var(--color-soft)]">
         <div className="shell">
           <FadeIn className="mx-auto max-w-3xl text-center">
             <p className="eyebrow">Our standards</p>
             <h2 className="section-title">Clarity is part of the product.</h2>
-            <p className="mt-6 text-lg leading-8 text-slate-600">
+            <p className="mt-6 text-lg leading-8 text-[var(--color-body)]">
               We favor plain language, accessible interfaces, measured
               performance, and data practices that can be explained without
               fine print.
@@ -531,30 +533,30 @@ function ServicesPage() {
           {services.map((service, index) => (
             <FadeIn
               key={service.title}
-              className="grid grid-cols-1 gap-8 rounded-[2rem] border border-teal-950/10 bg-white p-7 shadow-sm sm:p-10 lg:grid-cols-[.85fr_1.15fr]"
+              className="grid grid-cols-1 gap-8 rounded-[2rem] border border-[var(--color-border)] bg-[var(--color-surface)] p-7 shadow-sm sm:p-10 lg:grid-cols-[.85fr_1.15fr]"
             >
               <div>
                 <service.icon
-                  className="mb-7 rounded-xl bg-teal-100 p-3 text-teal-800"
+                  className="mb-7 rounded-xl bg-[var(--color-pill)] p-3 text-[var(--color-pill-text)]"
                   size={52}
                 />
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-coral-600">
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-[var(--color-accent-strong)]">
                   0{index + 1}
                 </p>
-                <h2 className="mt-2 text-3xl font-bold tracking-tight text-teal-950">
+                <h2 className="mt-2 text-3xl font-bold tracking-tight text-[var(--color-heading)]">
                   {service.title}
                 </h2>
               </div>
               <div>
-                <p className="text-lg leading-8 text-slate-600">{service.text}</p>
+                <p className="text-lg leading-8 text-[var(--color-body)]">{service.text}</p>
                 <ul className="mt-7 grid gap-3 sm:grid-cols-2">
                   {service.points.map((point) => (
                     <li
                       key={point}
-                      className="flex items-start gap-2 font-medium text-slate-700"
+                      className="flex items-start gap-2 font-medium text-[var(--color-body)]"
                     >
                       <Check
-                        className="mt-0.5 shrink-0 text-teal-600"
+                        className="mt-0.5 shrink-0 text-[var(--color-primary)]"
                         size={19}
                       />
                       {point}
@@ -566,12 +568,12 @@ function ServicesPage() {
           ))}
         </div>
       </section>
-      <section className="section bg-teal-50">
+      <section className="section bg-[var(--color-soft)]">
         <div className="shell">
           <FadeIn className="mb-12 max-w-2xl">
             <p className="eyebrow">Our products</p>
             <h2 className="section-title">Applications we build and operate.</h2>
-            <p className="mt-6 text-lg leading-8 text-slate-600">
+            <p className="mt-6 text-lg leading-8 text-[var(--color-body)]">
               Our product work reflects the same practical approach we bring to
               custom software: start with a specific workflow, then make it
               easier to complete.
@@ -579,9 +581,9 @@ function ServicesPage() {
           </FadeIn>
           <div className="grid gap-6 lg:grid-cols-2">
             <FadeIn className="info-card flex flex-col">
-              <PanelsTopLeft className="mb-8 text-teal-700" size={32} />
-              <h3 className="text-2xl font-bold text-teal-950">ReviewKeeper</h3>
-              <p className="mt-3 flex-1 leading-7 text-slate-600">
+              <PanelsTopLeft className="mb-8 text-[var(--color-primary)]" size={32} />
+              <h3 className="text-2xl font-bold text-[var(--color-heading)]">ReviewKeeper</h3>
+              <p className="mt-3 flex-1 leading-7 text-[var(--color-body)]">
                 A workflow tool for Amazon creators to organize review-related
                 product information and work more efficiently.
               </p>
@@ -589,17 +591,17 @@ function ServicesPage() {
                 href="https://reviewkeeper.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-7 inline-flex items-center gap-2 font-bold text-teal-800 hover:text-teal-600"
+                className="mt-7 inline-flex items-center gap-2 font-bold text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]"
               >
                 Visit ReviewKeeper <ExternalLink size={17} />
               </a>
             </FadeIn>
             <FadeIn className="info-card" delay={0.08}>
-              <Sparkles className="mb-8 text-teal-700" size={32} />
-              <h3 className="text-2xl font-bold text-teal-950">
+              <Sparkles className="mb-8 text-[var(--color-primary)]" size={32} />
+              <h3 className="text-2xl font-bold text-[var(--color-heading)]">
                 Therapy session-note assistant
               </h3>
-              <p className="mt-3 leading-7 text-slate-600">
+              <p className="mt-3 leading-7 text-[var(--color-body)]">
                 A note-writing tool that helps therapy providers draft
                 structured session notes more efficiently. It is described here
                 only in general terms and is not linked publicly.
@@ -667,7 +669,7 @@ function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-[2rem] bg-white p-7 shadow-xl sm:p-10">
+    <form onSubmit={handleSubmit} className="rounded-[2rem] bg-[var(--color-surface)] p-7 shadow-xl sm:p-10">
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="field-label">
           Name
@@ -685,7 +687,7 @@ function ContactForm() {
         </label>
       </div>
       <label className="field-label mt-5">
-        Phone <span className="font-normal text-slate-600">(optional)</span>
+        Phone <span className="font-normal text-[var(--color-body)]">(optional)</span>
         <input
           className="field"
           type="tel"
@@ -714,7 +716,7 @@ function ContactForm() {
       </button>
       <div aria-live="polite" className="mt-4 min-h-6 text-sm">
         {status === "sent" && (
-          <p className="font-semibold text-teal-700">
+          <p className="font-semibold text-[var(--color-primary)]">
             Thanks — your message has been sent.
           </p>
         )}
@@ -739,11 +741,11 @@ function ContactPage() {
         Questions about Tropic Wave Solutions or one of our products? Reach us
         by email or phone.
       </PageIntro>
-      <section className="section bg-teal-50">
+      <section className="section bg-[var(--color-soft)]">
         <div className="shell grid grid-cols-1 gap-12 lg:grid-cols-[.8fr_1.2fr]">
           <FadeIn>
-            <h2 className="text-2xl font-bold text-teal-950">Contact details</h2>
-            <p className="mb-8 mt-3 leading-7 text-slate-600">
+            <h2 className="text-2xl font-bold text-[var(--color-heading)]">Contact details</h2>
+            <p className="mb-8 mt-3 leading-7 text-[var(--color-body)]">
               Send a note with enough context for us to route your question.
             </p>
             <ContactDetails />
@@ -752,12 +754,12 @@ function ContactPage() {
             {WEB3FORMS_KEY ? (
               <ContactForm />
             ) : (
-              <div className="rounded-[2rem] bg-white p-8 shadow-xl sm:p-12">
-                <Mail className="text-teal-700" size={38} />
-                <h2 className="mt-6 text-3xl font-bold tracking-tight text-teal-950">
+              <div className="rounded-[2rem] bg-[var(--color-surface)] p-8 shadow-xl sm:p-12">
+                <Mail className="text-[var(--color-primary)]" size={38} />
+                <h2 className="mt-6 text-3xl font-bold tracking-tight text-[var(--color-heading)]">
                   Email us directly
                 </h2>
-                <p className="mt-4 max-w-lg leading-7 text-slate-600">
+                <p className="mt-4 max-w-lg leading-7 text-[var(--color-body)]">
                   Send us a message using your preferred email app.
                 </p>
                 <a
@@ -1114,13 +1116,13 @@ function DataDeletionPage() {
 
 function CallToAction() {
   return (
-    <section className="bg-coral-300">
+    <section className="bg-[var(--color-accent)] text-[var(--color-on-accent)]">
       <div className="shell flex flex-col items-start justify-between gap-8 py-14 sm:flex-row sm:items-center">
         <div>
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-teal-900">
+          <p className="text-sm font-bold uppercase tracking-[0.18em]">
             Have a question?
           </p>
-          <h2 className="mt-2 text-3xl font-black tracking-tight text-teal-950">
+          <h2 className="mt-2 text-3xl font-black tracking-tight">
             We’d be glad to hear from you.
           </h2>
         </div>
@@ -1136,10 +1138,10 @@ function NotFoundPage() {
   return (
     <main className="shell flex min-h-[65vh] flex-col items-start justify-center py-24">
       <p className="eyebrow">404</p>
-      <h1 className="text-5xl font-black tracking-tight text-teal-950">
+      <h1 className="text-5xl font-black tracking-tight text-[var(--color-heading)]">
         This page drifted away.
       </h1>
-      <p className="mt-5 max-w-lg text-lg leading-8 text-slate-600">
+      <p className="mt-5 max-w-lg text-lg leading-8 text-[var(--color-body)]">
         The address may be outdated, or the page may have moved.
       </p>
       <AppLink href="/" className="button button-dark mt-8">
@@ -1158,7 +1160,7 @@ export function App() {
   }, [location]);
 
   return (
-    <div className="min-h-screen bg-stone-50 text-slate-800">
+    <div className={`${ACTIVE_PALETTE} min-h-screen bg-[var(--color-page)] text-[var(--color-body)]`}>
       <Header />
       <Switch>
         <Route path="/" component={HomePage} />
