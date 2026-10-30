@@ -121,12 +121,12 @@
     transform: none;
   }
 
-  .button-coral {
+  .button-accent {
     background: var(--color-accent);
     color: var(--color-on-accent);
   }
 
-  .button-coral:hover {
+  .button-accent:hover {
     background: var(--color-accent-hover);
   }
 

@@ -309,7 +309,7 @@ function HomePage() {
               SaaS tools, business applications, integrations, and automation.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <AppLink href="/services" className="button button-coral">
+              <AppLink href="/services" className="button button-accent">
                 See what we do <ArrowRight size={18} />
               </AppLink>
               <AppLink href="/contact" className="button button-ghost">

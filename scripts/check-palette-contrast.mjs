@@ -38,10 +38,13 @@ const requiredPairs = [
   ["body", "page"],
   ["heading", "surface"],
   ["body", "surface"],
+  ["heading", "header"],
+  ["body", "header"],
   ["heading", "soft"],
   ["body", "soft"],
   ["primary", "page"],
   ["primary", "surface"],
+  ["primary", "header"],
   ["primary", "soft"],
   ["on-strong", "strong"],
   ["on-strong-muted", "strong"],
@@ -53,8 +56,10 @@ const requiredPairs = [
   ["accent-strong", "page"],
   ["accent-strong", "surface"],
   ["accent-strong", "soft"],
+  ["heading", "selection"],
   ["on-accent", "accent"],
   ["on-accent", "accent-hover"],
+  ["surface", "primary-hover"],
 ];
 
 function parsePalettes(css) {
