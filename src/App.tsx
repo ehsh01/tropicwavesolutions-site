@@ -324,11 +324,13 @@ function HomePage() {
           >
             <div className="absolute inset-7 rotate-6 rounded-[4rem] border border-teal-200/25 bg-white/5 backdrop-blur" />
             <div className="absolute inset-16 -rotate-3 rounded-[3.4rem] bg-teal-700/65 shadow-2xl" />
-            <img
-              src="/tw-logo-hero.webp"
-              alt="Tropic Wave Solutions"
-              className="absolute inset-24 rounded-[2.6rem] object-contain shadow-2xl"
-            />
+            <div className="absolute inset-24 rounded-[2.6rem] shadow-2xl">
+              <img
+                src="/tw-logo-hero.webp"
+                alt="Tropic Wave Solutions"
+                className="h-full w-full object-contain"
+              />
+            </div>
             <div className="absolute bottom-7 right-0 rounded-2xl border border-white/15 bg-teal-900/85 px-5 py-4 shadow-xl backdrop-blur">
               <p className="text-xs font-bold uppercase tracking-widest text-coral-300">
                 Our focus
